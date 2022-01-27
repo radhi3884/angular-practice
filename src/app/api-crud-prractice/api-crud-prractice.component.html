@@ -1,0 +1,77 @@
+<div class="container">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label>Firstname : </label>
+            <input type="text" name="firstName" formControlName="firstName" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.['required']">please enter your first name.</span>
+        </div>
+        <div class="form-group">
+            <label>Lastname : </label>
+            <input type="text" name="lastName" formControlName="lastName" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.['required']">please enter your last name.</span>
+        </div>
+        <div class="form-group">
+            <label>Age : </label>
+            <input type="number" name="age" formControlName="age" class="form-control" min="18" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('age')?.touched && userForm.get('age')?.errors?.['required']">please enter your age.</span>
+            <span class="text-danger" *ngIf="userForm.get('age')?.touched && userForm.get('age')?.errors?.['min']">please enter your age more than 18.</span>
+        </div>
+        <div class="form-group form-control mt-3">
+            <label class="me-3">Gender :</label>
+            <input type="radio" class="mx-2" value="male" name="gender" formControlName="gender" required>Male
+            <input type="radio" class="mx-2" value="female" name="gender" formControlName="gender" required>Female
+            <input type="radio" class="mx-2" value="other" name="gender" formControlName="gender" required>Other
+            <span class="text-danger" *ngIf="userForm.get('gender')?.touched && userForm.get('gender')?.errors?.['required']">please enter your gender.</span>
+        </div>
+        <div class="form-group form-control mt-3">
+            <label class="me-3">City :</label>
+            <select name="city" formControlName="city">
+                <option value="Surat">Surat</option>
+                <option value="kerela">kerela</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Other">Other</option>
+            </select>
+            <span class="text-danger" *ngIf="userForm.get('city')?.touched && userForm.get('city')?.errors?.['required']">please enter your city.</span>
+        </div>
+        <div class="form-group form-control mt-3">
+            <label>Hobbies : </label><br>
+            <input type="checkbox" value="Travelling" name="hobbies" class="mx-3" (change)="changehobbies($event)" [checked]="userhobbies.includes('Travelling')">Travelling
+            <input type="checkbox" value="Writing" name="hobbies" class="mx-3" (change)="changehobbies($event)" [checked]="userhobbies.includes('Writing')">Writing
+            <input type="checkbox" value="Reading" name="hobbies" class="mx-3" (change)="changehobbies($event)" [checked]="userhobbies.includes('Reading')">Reading
+            <input type="checkbox" value="Exersice" name="hobbies" class="mx-3" (change)="changehobbies($event)" [checked]="userhobbies.includes('Exersice')">Exersice
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success mt-4" (click)="saveData()" [disabled]="!userForm.valid">Submit</button>
+        </div>
+    </form>
+</div>
+<!-- ========== table ========== -->
+<div class="container">
+    <table class="table table-info mt-5">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>City</th>
+                <th>Hobbies</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let values of userData">
+                <td>{{ values.firstName }}</td>
+                <td>{{ values.lastName }}</td>
+                <td>{{ values.age }}</td>
+                <td>{{ values.gender }}</td>
+                <td>{{ values.city }}</td>
+                <td>{{ values.hobbies }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editData(values)">Add</button>
+                    <button class="btn btn-danger" (click)="deleteData(values._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

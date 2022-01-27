@@ -1,0 +1,70 @@
+<section class="container">
+    <h1 class="text-center" style="text-decoration-line: underline;">Reactive form</h1>
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label class="form-label">First name : </label>
+            <input type="text" name="firstname" class="form-control" formControlName="firstname" required autocomplete="off">
+            <span class=" text-danger" *ngIf="userForm.get('firstname')?.touched && userForm.get('firstname')?.errors?.[ 'required']">please enter first name.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Last name :</label>
+            <input type="text" name="lastname" formControlName="lastname" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('lastname')?.touched && userForm.get('lastname')?.errors?.[ 'required']">please enter last name.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Age :</label>
+            <input type="number" name="Age" formControlName="Age" class="form-control" min="18" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('Age')?.touched && userForm.get('Age')?.errors?.['required'] ">please enter Age.</span>
+            <span class="text-danger" *ngIf="userForm.get('Age')?.touched && userForm.get('Age')?.errors?.['min']">Age must be more than 18 years.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">E-mail</label>
+            <input type="email" name="email" formControlName="email" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['required'] ">please enter your e-mail id.</span>
+            <span class="text-danger" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['pattern']">please enter your e-mail id properly.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">password</label>
+            <input type="password" name="password" formControlName="password" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('password')?.touched && userForm.get('password')?.errors?.[ 'required']">please enter your password.</span>
+            <span class="text-danger" *ngIf="userForm.get('password')?.touched && userForm.get('password')?.errors?.[ 'pattern']">password must be 8-16 character with special character ad numbers.</span>
+        </div>
+        <!-- -- -->
+        <div style="background-color: gainsboro">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    <button type="button" class="btn btn-primary" (click)="addButtonClick()">
+                        Add Other Details
+                    </button>
+                </div>
+            </div>
+            <div formArrayName="other" *ngFor="let other of getControls() let i = index" class="form-group">
+                <div [formGroupName]="i">
+                    <div class="form-group">
+                        <label>Name :</label>
+                        <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+                    </div>
+                    <br>
+                    <div class="form-group" class="row cols-md-12">
+                        <label class="col-md-2 control-label">Gender :</label>
+                        <div class="container   ">
+                            <label class="radio-inline">
+                                <input id="gender" type="radio" value="male" formControlName="gender">Male
+                            </label>
+                            <label class="radio-inline">
+                                <input id="gender" type="radio" value="female" formControlName="gender">Female
+                            </label>
+                            <label class="radio-inline">
+                                <input id="gender" type="radio" value="other" formControlName="gender">Other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -- -->
+        <div class="form-group">
+            <button class="btn btn-primary mt-3" [disabled]="!userForm.valid">Submit</button>
+        </div>
+    </form>
+</section>

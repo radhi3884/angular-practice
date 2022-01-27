@@ -1,0 +1,35 @@
+<section class="container">
+    <form #userForm="ngForm" (ngSubmit)="submitData()">
+        <div class="form-group">
+            <label class="form-label">First name :</label>
+            <input type="text" name="firstname" class="form-control" ngModel #firstname="ngModel" required autocomplete="off">
+            <span class=" text-danger " *ngIf="firstname?.touched && firstname?.errors?.['required'] ">please enter first name.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Last name :</label>
+            <input type="text" name="lastname" #lastname="ngModel" ngModel class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="lastname?.touched && lastname?.errors?.['required']">please enter last name.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Age :</label>
+            <input type="number" name="Age" #Age="ngModel" ngModel class="form-control" min="18" required autocomplete="off">
+            <span class="text-danger" *ngIf="Age?.touched && Age?.errors?.['required']">please enter Age.</span>
+            <span class="text-danger" *ngIf="Age?.touched && Age?.errors?.['min']">Age must be more than 18 years.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">E-mail :</label>
+            <input type="email" name="email" #email="ngModel" ngModel class="form-control" required autocomplete="off" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,16}$">
+            <span class="text-danger" *ngIf="email?.touched && email?.errors?.['required']">please enter your e-mail id.</span>
+            <span class="text-danger" *ngIf="email?.touched && email?.errors?.['pattern']">please enter your e-mail id properly.</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">password :</label>
+            <input type="password" name="password" #password="ngModel" ngModel class="form-control" minlength="8" maxlength="16" required autocomplete="off" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,16}$">
+            <span class="text-danger" *ngIf="password?.touched && password?.errors?.['required']">please enter your password.</span>
+            <span class="text-danger" *ngIf="password?.touched && password?.errors?.['pattern']">password must be 8-16 character with special character ad numbers.</span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary mt-3" [disabled]="!userForm.valid">Submit</button>
+        </div>
+    </form>
+</section>

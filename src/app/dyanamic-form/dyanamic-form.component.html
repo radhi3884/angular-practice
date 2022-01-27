@@ -1,0 +1,40 @@
+<div class="container">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label>First name :</label>
+            <input type="text" name="firstname" formControlName="firstname" class="form-control" autocomplete="off" required>
+            <span class="text-danger" *ngIf="userForm.get('firstname')?.touched && userForm.get('firstname')?.errors?.['required']">pleaase enter ur name</span>
+        </div>
+
+        <div class="bg-info">
+            <div>
+                <button type="button" (click)="addButtonClick()">add details</button>
+            </div>
+            <div formArrayName="details" *ngFor="let details of getControls() let i = 'index'" class="form-group">
+                <div [formGroupName]="i">
+                    <!-- input fields -->
+                    <div class="form-group">
+                        <label>f name :</label>
+                        <input type="text" name="fname" formControlName="fname" class="form-control" autocomplete="off" required>
+                        <span class="text-danger" *ngIf="userForm.get('fname')?.touched && userForm.get('fname')?.errors?.['required']">pleaase enter ur name</span>
+                    </div>
+                    <div class="form-group">
+                        <label>First name :</label>
+                        <input type="text" name="firstname" formControlName="firstname" class="form-control" autocomplete="off" required>
+                        <span class="text-danger" *ngIf="userForm.get('firstname')?.touched && userForm.get('firstname')?.errors?.['required']">pleaase enter ur name</span>
+                    </div>
+                    <div class="form-group">
+                        <label>l name :</label>
+                        <input type="text" name="lname" formControlName="lname" class="form-control" autocomplete="off" required>
+                        <span class="text-danger" *ngIf="userForm.get('lname')?.touched && userForm.get('lname')?.errors?.['required']">pleaase enter ur name</span>
+                    </div>
+                    <div class="form-group">
+                        <label>last name :</label>
+                        <input type="text" name="lastname" formControlName="lastname" class="form-control" autocomplete="off" required>
+                        <span class="text-danger" *ngIf="userForm.get('lastname')?.touched && userForm.get('lastname')?.errors?.['required']">pleaase enter ur name</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

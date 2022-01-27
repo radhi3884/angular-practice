@@ -1,0 +1,73 @@
+<div class="container">
+    <form [formGroup]=userForm>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="firstName" formControlName="firstName" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.['required']">please enter your firstName.</span>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="lastName" formControlName="lastName" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.['required']">please enter your lastName.</span>
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" min="18" formControlName="age" class="form-control" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('age')?.touched && userForm.get('age')?.errors?.['required']">please enter your age.</span>
+            <span class="text-danger" *ngIf="userForm.get('age')?.touched && userForm.get('age')?.errors?.['min']">please enter your age more than 18.</span>
+        </div>
+        <div class="form-group mt-3 form-control">
+            <label class="me-4">Hobbies</label>
+            <br>
+            <input type="checkbox" class="me-3" (change)="hobbiesChanged($event)" name="hobbies" [checked]="userHobbies.includes('Reading')" value="Reading">Reading
+            <input type="checkbox" class="mx-3" (change)="hobbiesChanged($event)" name="hobbies" [checked]="userHobbies.includes('Writing')" value="Writing">Writing
+            <input type="checkbox" class="mx-3" (change)="hobbiesChanged($event)" name="hobbies" [checked]="userHobbies.includes('Travelling')" value="Travelling">Travelling
+            <input type="checkbox" class="mx-3" (change)="hobbiesChanged($event)" name="hobbies" [checked]="userHobbies.includes('Exersice')" value="Exersice">Exersice
+        </div>
+        <div class="form-group mt-3 form-control">
+            <label>State</label>
+            <select name="city" formControlName="city" class="mx-3">
+                <option>Surat</option>
+                <option>kerela</option>
+                <option>mumbai</option>
+                <option>other</option>
+            </select>
+        </div>
+        <div class="form-group ">
+            <label>Password</label>
+            <input type="text" class="form-control" name="password" formControlName="password" required autocomplete="off">
+            <span class="text-danger" *ngIf="userForm.get('password')?.touched && userForm.get('password')?.errors?.['required'] "></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success mt-4" (click)="saveData()" [disabled]="!userForm.valid">Submit</button>
+        </div>
+    </form>
+</div>
+<!-- ----------------------- table ----------------------- -->
+<div class="container mt-5">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>First name :</th>
+                <th>Last name :</th>
+                <th>Age :</th>
+                <th>Hobbies :</th>
+                <th>State :</th>
+                <th>Action :</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of userData">
+                <td>{{ item.firstName}}</td>
+                <td>{{ item.lastName}}</td>
+                <td>{{ item.age}}</td>
+                <td>{{ item.hobbies}}</td>
+                <td>{{ item.city}}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="editData(item)">Update</button>
+                    <button class="btn btn-success" (click)="deleteData(item._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
