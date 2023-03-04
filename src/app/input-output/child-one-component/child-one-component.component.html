@@ -1,0 +1,5 @@
+<h3>Child - 1</h3>
+<button class="btn btn-dark mx-3" (click)="parent('child 1')">Change parent</button>
+
+<p class="m-3">{{ inputData2 }}</p>
+<app-child-two-component (parent)="parentUpdate($event)" (child1)="child1Update($event)"></app-child-two-component>

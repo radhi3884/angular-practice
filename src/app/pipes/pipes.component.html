@@ -1,8 +1,14 @@
 <p>{{ 'radhi' | uppercase }}</p>
 <p>{{ 100000000000000 | customPipes}}</p>
-<p>{{ 3 | powerPipe:10}}</p>
-<p>{{ 1000 | currency:'INR'}}</p>
+<p>{{ 2 | powerPipe:3}}</p>
+<!-- 2 base 3 exponent in power pipe -->
 <!-- <p>{{ element | tagPipe}}</p> -->
+<p>{{ 1000 | currency:'INR'}}</p>
 <p>{{ element }}</p>
 
-<p>{{ '<a>hello</a>'}}</p>
+<p>{{ '<a>hello</a>' }}</p>
+
+<h5>{{ currentdate | date:'mediumDate' | uppercase}}</h5>
+
+<!-- <p *ngFor="let value of userdata">{{ value }}</p> -->
+<p *ngFor="let value of userlist | filter : includeText">{{ value }}</p>

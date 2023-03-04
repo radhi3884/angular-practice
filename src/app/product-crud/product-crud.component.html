@@ -1,0 +1,68 @@
+<section class="container">
+    <form [formGroup]="productcrud">
+        <div class="form-group">
+            <label>Category : </label>
+            <select name="category" class="form-control" formControlName="category" required>
+                <option value="Girl">Girl</option>
+                <option value="Boy">Boy</option>
+                <option value="Mans">Mans</option>
+                <option value="Women">Women</option>
+            </select>
+            <span class="text-danger" *ngIf="productcrud.get('category')?.touched && productcrud.get('category')?.errors?.['required']">please select your category.</span>
+        </div>
+        <div class="form-group">
+            <label>Product Name :</label>
+            <input type="text" class="form-control" formControlName="productName" name="productName" required autocomplete="off">
+            <span class="text-danger" *ngIf="productcrud.get('productName')?.touched && productcrud.get('productName')?.errors?.['required']">please enter your productName.</span>
+        </div>
+        <div class="form-group">
+            <label>Price : </label>
+            <input type="number" class="form-control" name="price" formControlName="price" required autocomplete="off">
+            <span class="text-danger" *ngIf="productcrud.get('price')?.touched && productcrud.get('price')?.errors?.['required']">please enter prices.</span>
+        </div>
+        <div class="form-group">
+            <label>Cloth Size : </label>
+            <select name="clothSize" formControlName="clothSize" class="form-control">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+            <span class="text-danger" *ngIf="productcrud.get('clothSize')?.touched && productcrud.get('clothSize')?.errors?.['required']">Please select clothSize.</span>
+        </div>
+        <div class="form-group">
+            <label>Stock : </label>
+            <select name="inStock" formControlName="inStock" required class="form-control">
+                <option value="stock">stock</option>
+                <option value="out of stock">out of stock</option>
+            </select>
+            <span class="text-danger" *ngIf="productcrud.get('inStock')?.touched && productcrud.get('inStock')?.errors?.['required']">please enter Stock.</span>
+        </div>
+        <div class="form-group">
+            <label>Description :</label>
+            <input type="text" class="form-control" formControlName="description" name="description" required autocomplete="off">
+            <span class="text-danger" *ngIf="productcrud.get('description')?.touched && productcrud.get('description')?.errors?.['required']">please enter your description.</span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary mt-3" type="submit" [disabled]="!productcrud.valid">Submit</button>
+        </div>
+    </form>
+</section>
+
+<!-- ---- table ---- -->
+<section class="container">
+    <table class="table table-warning mt-4">
+        <thead>
+            <tr>
+                <th>category</th>
+                <th>productName</th>
+                <th>price</th>
+                <th>clothSize</th>
+                <th>inStock</th>
+                <th>description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+</section>

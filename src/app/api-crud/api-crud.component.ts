@@ -19,8 +19,9 @@ export class ApiCrudComponent implements OnInit {
       lastName : ['', Validators.required],
       age : ['' , Validators.required],
       city : [''],
-      password : ['' ,Validators.required]
-    })
+      password : ['' ,Validators.required],
+      id : []
+    });
   }
 
   ngOnInit(): void {
@@ -98,8 +99,8 @@ addData(){
 // ------------ update data
 updateData() {
   const payload = {
-    "firstName": this.userForm.get('firstname')?.value,
-    "lastName": this.userForm.value.lastname,
+    "firstName": this.userForm.get('firstName')?.value,
+    "lastName": this.userForm.value.lastName,
     "age": this.userForm.value.age,
     "hobbies": this.userHobbies.join(','),
     "gender": this.userForm.value.gender,

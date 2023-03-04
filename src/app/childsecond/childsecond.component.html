@@ -1,0 +1,6 @@
+<h2>child 2 component</h2>
+<p>{{message}}</p>
+<button (click)="updateParentFromTwo('parent updated from child 2')" class="btn btn-success me-2">update parent</button>
+<button (click)="updateChild1FromTwo('child 1 updated from child 2')" class="btn  btn-secondary">update child 1</button>
+<app-childthird (updateParentFromTwo)="updateParentFromTwo($event)" (updateChildFromTwo)="updateChild1FromTwo($event)"
+    (updateChild2)="updateChild2($event)"></app-childthird>

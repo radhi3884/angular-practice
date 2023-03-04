@@ -1,0 +1,6 @@
+<h3>Child - 2</h3>
+<button class="btn btn-dark mx-3" (click)="parentUpdate('parent update from child 2')">Change parent</button>
+<button class="btn btn-warning mx-3" (click)="childUpdate1(child 1 update from child 2)">Child 1</button>
+<!-- -- -->
+<p class="m-3">{{ inputData3}}</p>
+<app-child-three-component (parentUpdate)="parentUpdate($event)" (childUpdate1)="childUpdate1($event)" (childUpdate2)="childUpdate2($event)"></app-child-three-component>

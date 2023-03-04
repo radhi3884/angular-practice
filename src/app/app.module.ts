@@ -13,6 +13,14 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 import { DyanamicFormComponent } from './dyanamic-form/dyanamic-form.component';
 import { ApiCrudComponent } from './api-crud/api-crud.component';
 import { ApiCrudPrracticeComponent } from './api-crud-prractice/api-crud-prractice.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ProductCrudComponent } from './product-crud/product-crud.component';
+import { ParentComponentComponent } from './input-output/parent-component/parent-component.component';
+import { ChildOneComponentComponent } from './input-output/child-one-component/child-one-component.component';
+import { ChildTwoComponentComponent } from './input-output/child-two-component/child-two-component.component';
+import { ChildThreeComponentComponent } from './input-output/child-three-component/child-three-component.component';
+import { ChildFourComponentComponent } from './input-output/child-four-component/child-four-component.component';
+import { ChildFiveComponentComponent } from './input-output/child-five-component/child-five-component.component';
 
 
 @NgModule({
@@ -26,7 +34,15 @@ import { ApiCrudPrracticeComponent } from './api-crud-prractice/api-crud-prracti
     TemplateDrivenFormComponent,
     DyanamicFormComponent,
     ApiCrudComponent,
-    ApiCrudPrracticeComponent
+    ApiCrudPrracticeComponent,
+    FilterPipe,
+    ProductCrudComponent,
+    ParentComponentComponent,
+    ChildOneComponentComponent,
+    ChildTwoComponentComponent,
+    ChildThreeComponentComponent,
+    ChildFourComponentComponent,
+    ChildFiveComponentComponent
   ],
   imports: [
     BrowserModule,
